@@ -20,7 +20,7 @@ async def subway_cateogry():
     "사이드, 음료"
     ]
     return {"category":category}
-
+# 서브웨이 로고 이미지 : https://www.subway.co.kr/images/common/logo_w.png
 @app.get("/subway/category")
 async def subway_cateogry():
     sandwich=[

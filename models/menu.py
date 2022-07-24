@@ -28,4 +28,5 @@ class Menu(Removable):
     name = Column(String(100), nullable=False)
     category2_id = Column(Integer(),ForeignKey("category2.id"), nullable = True)
     price = Column(Integer(100), nullable = False)
+    menu_image_url = Column(String(255), nullable = True)
 

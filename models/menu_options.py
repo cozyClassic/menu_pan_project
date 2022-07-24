@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from .common import Removable
 
 
@@ -16,3 +16,4 @@ class MenuOptionDetails(Removable):
     price = Column(Integer(100), nullable = False)
     priority = Column(Integer(), nullable=True)
     option_id = Column(Integer(),ForeignKey("menu_options.id"), nullable = True)
+    option_image_url = Column(String(255), nullable = True)
