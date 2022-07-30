@@ -1,5 +1,11 @@
 version: "3.8"
 services:
+  post_gre_sql:
+    build: postgresql
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_PASSWORD=asdqwe123
   fast_api_menu:
     build: ./
     ports: 

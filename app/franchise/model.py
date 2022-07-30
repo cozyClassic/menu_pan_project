@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from .common import Removable
+from ..common.model import Removable
 
 
 class Franchise(Removable):

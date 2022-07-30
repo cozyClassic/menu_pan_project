@@ -1,6 +1,6 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
 
-from .common import Removable
+from ..common.model import Removable
 
 
 class Category1(Removable):
@@ -30,3 +30,13 @@ class Menu(Removable):
     price = Column(Integer(100), nullable = False)
     menu_image_url = Column(String(255), nullable = True)
 
+class MenuDetail(Removable):
+    __tablename__ = "menu_detail"
+    calorie = Column()
+    sodiume = Column()
+    protein = Column()
+    s_fat = Column()
+    un_s_fat= Column()
+    caffein = Column()
+    sugars = Column()
+    allegry = Column()

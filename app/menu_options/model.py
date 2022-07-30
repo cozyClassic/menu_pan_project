@@ -1,5 +1,5 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
-from .common import Removable
+from ..common.model import Removable
 
 
 class MenuOptions(Removable):
