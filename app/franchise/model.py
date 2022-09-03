@@ -1,8 +1,9 @@
 from sqlalchemy import Column, Integer, String
-from ..common.model import Removable
+from common.model import Removable
+from db.db import Base
 
 
-class Franchise(Removable):
+class Franchise(Removable, Base):
     __tablename__ = "franchise"
 
     id = Column(Integer(), primay_key=True)

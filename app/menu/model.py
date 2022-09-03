@@ -1,9 +1,10 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
 
 from ..common.model import Removable
+from db.db import Base
 
 
-class Category1(Removable):
+class Category1(Removable, Base):
     __tablename__ = "category1"
 
     id = Column(Integer(), primay_key=True)
@@ -13,7 +14,7 @@ class Category1(Removable):
     def __repr__(self):
         return f"Category1 {self.name}"
 
-class Category2(Removable):
+class Category2(Removable, Base):
     __tablename__ = "category2"
 
     id = Column(Integer(), primay_key=True)
@@ -30,7 +31,7 @@ class Menu(Removable):
     price = Column(Integer(100), nullable = False)
     menu_image_url = Column(String(255), nullable = True)
 
-class MenuDetail(Removable):
+class MenuDetail(Removable, Base):
     __tablename__ = "menu_detail"
     calorie = Column()
     sodiume = Column()
