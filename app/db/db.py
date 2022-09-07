@@ -1,21 +1,21 @@
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
 from config  import DATABASE_URI
+from bson.objectid import ObjectId
+import motor.motor_asyncio
 
-engine = create_engine(DATABASE_URI)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+client = motor.motor_asyncio.AsyncIOMotorClient('localhost',27017)
+db = client.menu
 
-Base = declarative_base()
+class PyObjectId(ObjectId):
+    @classmethod
+    def __get_validators__(cls):
+        yield cls.validate
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+    @classmethod
+    def validate(cls, v):
+        if not ObjectId.is_valid(v):
+            raise ValueError("Invalid objectid")
+        return ObjectId(v)
 
-def _commit(db,data):
-    db.add(data)
-    db.commit()
-    db.refresh(data)
+    @classmethod
+    def __modify_schema__(cls, field_schema):
+        field_schema.update(type="string")
